@@ -5,6 +5,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [{
   path: '',
+  // component: HomeComponent
   component: HomeComponent
 },{
   path: 'card',

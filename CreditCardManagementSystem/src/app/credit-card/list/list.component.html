@@ -1,0 +1,16 @@
+<p>list works!</p>
+<table>
+    <tr>
+        <th>card_number</th>
+        <th>csc_code</th>
+        <th>cardholder_name</th>
+    </tr>
+</table>
+<table *ngFor="let card of CardData">
+    <tr>
+        <td>{{card.card_number}}</td>
+        <td>{{card.csc_code}}</td>
+        <td>{{card.cardholder_name}}</td>
+    </tr>
+
+</table>
