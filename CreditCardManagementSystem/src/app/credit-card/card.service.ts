@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CardInterface } from './card.interface';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs'
+import { Observable, of } from 'rxjs'
+import {switchMap} from 'rxjs/operators'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,8 +13,17 @@ export class CardService {
 
   constructor(private http:HttpClient) { }
 
-  fetchData(): Observable<CardInterface[]> {
+  fetchDatas(): Observable<CardInterface[]> {
     return this.http.get<CardInterface[]>(this.url);
+  }
+
+  fetchData(id: number){
+    return this.http.get<CardInterface[]>(this.url).pipe(
+      switchMap((list) => {
+        let item = list[+id];
+        return of(item);
+      })
+    );
   }
 
 }

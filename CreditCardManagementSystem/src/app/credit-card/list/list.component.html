@@ -1,16 +1,18 @@
 <p>list works!</p>
 <table>
     <tr>
+        <th>view detail</th>
         <th>card_number</th>
-        <th>csc_code</th>
         <th>cardholder_name</th>
+        <th>issuer</th>
     </tr>
 </table>
-<table *ngFor="let card of CardData">
+<table *ngFor="let card of CardData; let i=index">
     <tr>
+        <td><a routerLink="{{ i }}"> Details </a></td>
         <td>{{card.card_number}}</td>
-        <td>{{card.csc_code}}</td>
         <td>{{card.cardholder_name}}</td>
+        <td>{{card.issuer}}</td>
     </tr>
 
 </table>

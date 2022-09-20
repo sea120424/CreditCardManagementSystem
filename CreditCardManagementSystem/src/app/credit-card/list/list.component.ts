@@ -14,13 +14,15 @@ export class ListComponent implements OnInit {
   constructor(private cardService: CardService) { }
 
   ngOnInit(): void {
-    this.OnFetchData();
+    this.OnFetchDatas();
     
+    //this.cardService.fetchData(1).subscribe(data => {
+    //  console.log(data);
+    //});
   }
 
-  OnFetchData(){
-    this.cardService.fetchData().subscribe(data => {
-      console.log(data);
+  OnFetchDatas(){
+    this.cardService.fetchDatas().subscribe(data => {
       this.CardData = data;
     });
   }
