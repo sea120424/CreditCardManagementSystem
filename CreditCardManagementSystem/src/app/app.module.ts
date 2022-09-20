@@ -8,18 +8,20 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { CreditCardModule } from './credit-card/credit-card.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavigationBarComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CreditCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

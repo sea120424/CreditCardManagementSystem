@@ -16,6 +16,10 @@ import { ListItemComponent } from './list-item/list-item.component';
   imports: [
     CommonModule,
     CreditCardRoutingModule
+  ],
+  exports: [
+    ListComponent,
+    ListItemComponent
   ]
 })
 export class CreditCardModule { }

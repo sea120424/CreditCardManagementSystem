@@ -9,7 +9,7 @@
 </table>
 <table *ngFor="let card of CardData; let i=index">
     <tr>
-        <td><a routerLink="{{ i }}"> Details </a></td>
+        <td><a routerLink="/card/list/{{ i }}"> Details </a></td>
         <td>{{card.card_number}}</td>
         <td>{{card.cardholder_name}}</td>
         <td>{{card.issuer}}</td>
