@@ -5,7 +5,7 @@ import { CreditCardRoutingModule } from './credit-card-routing.module';
 import { AddComponent } from './add/add.component';
 import { ListComponent } from './list/list.component';
 import { ListItemComponent } from './list-item/list-item.component';
-
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import { ListItemComponent } from './list-item/list-item.component';
   ],
   imports: [
     CommonModule,
-    CreditCardRoutingModule
+    CreditCardRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     ListComponent,

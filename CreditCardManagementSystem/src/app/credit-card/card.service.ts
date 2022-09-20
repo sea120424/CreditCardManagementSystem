@@ -26,4 +26,10 @@ export class CardService {
     );
   }
 
+  AddCard(card: CardInterface){
+    console.log(card);
+    this.http.post(this.url, card).subscribe();
+  }
+
+
 }

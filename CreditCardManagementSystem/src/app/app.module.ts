@@ -9,19 +9,21 @@ import { HomeComponent } from './home/home.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { CreditCardModule } from './credit-card/credit-card.module';
+// import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavigationBarComponent,
-    PagenotfoundComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CreditCardModule
+    CreditCardModule,
+    // ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
