@@ -29,11 +29,10 @@ export class AddComponent implements OnInit {
     
     this.AddCardForm = new FormGroup({
       'card_number': new FormControl("", [Validators.required, this.CardNameChecker.bind(this)]),
-      // 'card_number': new FormControl(null, [Validators.required]),
-      'cardholder_name': new FormControl(null),
-      'csc_code': new FormControl(null),
-      'expiration_date_month': new FormControl(null),
-      'expiration_date_year': new FormControl(null),
+      'cardholder_name': new FormControl(null, Validators.required),
+      'csc_code': new FormControl(null, [Validators.required, this.CSCChecker.bind(this)]),
+      'expiration_date_month': new FormControl(null, [Validators.required, this.ExpiredMonthChecker.bind(this)]),
+      'expiration_date_year': new FormControl(null, Validators.required),
       'issuer': new FormControl(null)
     });
     
@@ -51,15 +50,34 @@ export class AddComponent implements OnInit {
       return {"InValidLen": true};
     }
     const cardNumberLen = control.value.toString().length;
-
-
-    
-    console.log(cardNumberLen);
-
+  
+    // console.log(cardNumberLen);
     if(cardNumberLen < 7 || cardNumberLen > 16){
       return {"InValidLen": true};
-    }
-    
+    }  
     return null;
+  }
+
+  CSCChecker(control: FormControl): {[s: string]: boolean} | null {
+    if(!control.value){
+      return {"InValidLen": true};
+    }
+    const cscLen = control.value.toString().length;
+    if(cscLen !== 3){
+      return {"InValidLen": true};
+    }
+    return null;
+  }
+
+  ExpiredMonthChecker(control: FormControl): {[s: string]: boolean} | null {
+    if(!control.value){
+      return {"InValidLen": true};
+    }
+    const month = control.value;
+    if(month < 1 || month > 12){
+      return {"InValidLen": true};
+    }
+    return null;
+
   }
 }

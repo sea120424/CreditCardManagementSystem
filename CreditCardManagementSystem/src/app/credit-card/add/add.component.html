@@ -12,7 +12,7 @@
             <span *ngIf="AddCardForm.get('card_number')?.touched &&
             AddCardForm.get('card_number')?.invalid &&
             AddCardForm.get('card_number')?.errors?.['InValidLen']">
-                Card Number should be length between 7 to 16.
+                Card number should be length between 7 to 16.
             </span>
 
         </div>
@@ -23,6 +23,11 @@
             type="text"
             id="cardholder_name"
             formControlName="cardholder_name">
+
+            <span *ngIf="AddCardForm.get('cardholder_name')?.touched &&
+            AddCardForm.get('cardholder_name')?.invalid ">
+                Card holder name should not be empty.
+            </span>
         </div>
         <div>
             <label for="csc_code"> CSC Code </label>
@@ -30,6 +35,13 @@
             type="number"
             id="csc_code"
             formControlName="csc_code">
+
+            <span *ngIf="AddCardForm.get('csc_code')?.touched &&
+            AddCardForm.get('csc_code')?.invalid &&
+            AddCardForm.get('csc_code')?.errors?.['InValidLen']">
+                CSC code must be 3 digit integer.
+            </span>
+
         </div>
         <div>
             <label for="expiration_date_month"> Expiration Month </label>
@@ -37,6 +49,12 @@
             type="number"
             id="expiration_date_month"
             formControlName="expiration_date_month">
+
+            <span *ngIf="AddCardForm.get('expiration_date_month')?.touched &&
+            AddCardForm.get('expiration_date_month')?.invalid &&
+            AddCardForm.get('expiration_date_month')?.errors?.['InValidLen']">
+                Month must be in the range from 1 to 12.
+            </span>
         </div>
         <div>
             <label for="expiration_date_year"> Expiration Year </label>
@@ -44,6 +62,10 @@
             type="number"
             id="expiration_date_year"
             formControlName="expiration_date_year">
+            <span *ngIf="AddCardForm.get('expiration_date_year')?.touched &&
+            AddCardForm.get('expiration_date_year')?.invalid ">
+                Year should not be empty.
+            </span>
         </div>
         <div>
             <label for="issuer"> Issuer </label>
