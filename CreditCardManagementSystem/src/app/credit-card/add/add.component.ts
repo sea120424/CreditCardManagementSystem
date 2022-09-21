@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, ValidationErrors, FormBuilder } fro
 import { CardService } from '../card.service';
 import { CardInterface } from '../card.interface';
 import { Observable } from 'rxjs'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -11,8 +12,7 @@ import { Observable } from 'rxjs'
 })
 export class AddComponent implements OnInit {
 
-
-  constructor(private cardService: CardService, private formBuilder: FormBuilder) { }
+  constructor(private cardService: CardService, private formBuilder: FormBuilder, private jumper: Router) { }
   AddCardForm!: FormGroup;
 
   ngOnInit(): void {
@@ -41,6 +41,7 @@ export class AddComponent implements OnInit {
   OnCreateData(){
     console.log(this.AddCardForm);
     this.cardService.AddCard(this.AddCardForm.value)
+    this.jumper.navigate(['/']);
   }
 
   

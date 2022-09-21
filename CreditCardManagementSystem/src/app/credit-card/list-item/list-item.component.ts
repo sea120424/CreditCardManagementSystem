@@ -13,7 +13,7 @@ export class ListItemComponent implements OnInit {
   singleCard!: CardInterface;
   id!: number;
 
-  constructor(private cardService: CardService, private router: ActivatedRoute) { }
+  constructor(private cardService: CardService, private router: ActivatedRoute, private jumper: Router) { }
 
   ngOnInit(): void {
     this.id = this.router.snapshot.params['id'];
@@ -25,5 +25,10 @@ export class ListItemComponent implements OnInit {
       console.log(data);
       this.singleCard = data;
     });
+  }
+
+  OnDeleteCard(){
+    this.cardService.DeleteCard(this.id);
+    this.jumper.navigate(['/']);
   }
 }

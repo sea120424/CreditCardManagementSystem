@@ -32,4 +32,8 @@ export class CardService {
   }
 
 
+  DeleteCard(id: number){
+    this.http.delete(`${this.url}/${id}`).subscribe();
+  }
+
 }

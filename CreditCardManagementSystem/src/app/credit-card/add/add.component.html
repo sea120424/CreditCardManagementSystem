@@ -12,7 +12,7 @@
             <span *ngIf="AddCardForm.get('card_number')?.touched &&
             AddCardForm.get('card_number')?.invalid &&
             AddCardForm.get('card_number')?.errors?.['InValidLen']">
-                Card number should be length between 7 to 16.
+                Card number should be length between 7 to 16 integer.
             </span>
 
         </div>
@@ -53,7 +53,7 @@
             <span *ngIf="AddCardForm.get('expiration_date_month')?.touched &&
             AddCardForm.get('expiration_date_month')?.invalid &&
             AddCardForm.get('expiration_date_month')?.errors?.['InValidLen']">
-                Month must be in the range from 1 to 12.
+                Month must be in the range from 1 to 12 integer.
             </span>
         </div>
         <div>
