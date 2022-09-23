@@ -10,14 +10,12 @@
 </ul>
 <span>
     <p> The transactions belong to this card </p>
-    <div>    
-        <!--
-        <ul *ngFor="let transaction of FliteredTransactionData$ | async">
-            <li> amount: {{transaction.amount}}
-            <hr>
-        </ul>
-
-        -->    
+    <div *ngFor="let t of transactionData; let i=index">    
+        <li *ngIf="t.credit_card.card_number === singleCard.card_number">
+            <span>
+                {{ t | json }}
+            </span>
+        </li>
        
     </div>
 </span>
