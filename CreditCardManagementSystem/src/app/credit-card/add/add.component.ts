@@ -28,7 +28,7 @@ export class AddComponent implements OnInit {
     */
     
     this.AddCardForm = new FormGroup({
-      'card_number': new FormControl("", [Validators.required, this.CardNameChecker.bind(this)]),
+      'card_number': new FormControl("", [Validators.required, this.CardNumberChecker.bind(this)]),
       'cardholder_name': new FormControl(null, Validators.required),
       'csc_code': new FormControl(null, [Validators.required, this.CSCChecker.bind(this)]),
       'expiration_date_month': new FormControl(null, [Validators.required, this.ExpiredMonthChecker.bind(this)]),
@@ -45,7 +45,7 @@ export class AddComponent implements OnInit {
   }
 
   
-  CardNameChecker(control: FormControl): {[s: string]: boolean} | null
+  CardNumberChecker(control: FormControl): {[s: string]: boolean} | null
    {
     if(!control.value){
       return {"InValidLen": true};

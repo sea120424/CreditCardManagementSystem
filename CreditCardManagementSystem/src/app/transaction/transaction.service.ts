@@ -20,4 +20,9 @@ export class TransactionService {
     this.http.delete(`${this.url}/${uid}`).subscribe();
     
   }
+
+  AddTransaction(transaction: TransactionInterface){
+    this.http.post(this.url, transaction).subscribe()
+  }
+
 }

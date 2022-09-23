@@ -1,1 +1,51 @@
 <p>add works!</p>
+
+<div>
+    <form [formGroup]="AddTransactionForm" (ngSubmit)="OnCreateTransaction()">
+        <div>
+            <label for="card_number"> Card Number </label>
+            <input
+            type="number"
+            id="card_number"
+            formControlName="card_number">
+            <span *ngIf="AddTransactionForm.get('card_number')?.touched &&
+            AddTransactionForm.get('card_number')?.invalid &&
+            AddTransactionForm.get('card_number')?.errors?.['InValidLen']">
+                Card number should be length between 7 to 16 integer.
+            </span>
+
+            <span *ngIf="AddTransactionForm.get('card_number')?.touched &&
+            AddTransactionForm.get('card_number')?.invalid &&
+            AddTransactionForm.get('card_number')?.errors?.['CardNonExist']">
+                Card not exist, please enroll the card first.
+            </span>
+
+        </div>
+
+        <div>
+            <label for="amount"> Amount </label>
+            <input
+            type="number"
+            id="amount"
+            formControlName="amount">
+        </div>
+
+        <div>
+            <label for="currency"> Currency </label>
+            <input
+            type="string"
+            id="currency"
+            formControlName="currency">
+        </div>
+
+        <div>
+            <label for="date"> Date </label>
+            <input
+            type="number"
+            id="date"
+            formControlName="date">
+        </div>
+        <button type="submit" [disabled]="!AddTransactionForm.valid"> Submit </button>
+    </form>
+
+</div>

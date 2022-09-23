@@ -34,6 +34,7 @@ export class OverviewComponent implements OnInit {
   OnDeleteTransaction(id: number){
     const uid = this.transactionData[id].uid;
     this.transcationService.deleteTransaction(uid);
-    window.location.reload();
+    this.transactionData.splice(id, 1);
+    // window.location.reload();
   }
 }
