@@ -17,12 +17,14 @@ export class CardService {
     return this.http.get<CardInterface[]>(this.url);
   }
 
-  fetchData(id: number){
+  fetchData(id: number): Observable<CardInterface> {
     return this.http.get<CardInterface[]>(this.url).pipe(
       switchMap((list) => {
-        let item = list[+id];
+        let item = list[id];
+        // console.log(of(item));
         return of(item);
       })
+      
     );
   }
 

@@ -6,7 +6,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { ListComponent } from './list/list.component';
 import { ListItemComponent } from './list-item/list-item.component';
 import { AddComponent } from './add/add.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,12 +14,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     OverviewComponent,
     ListComponent,
     ListItemComponent,
-    AddComponent
+    AddComponent,
   ],
   imports: [
     CommonModule,
     TransactionRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     OverviewComponent

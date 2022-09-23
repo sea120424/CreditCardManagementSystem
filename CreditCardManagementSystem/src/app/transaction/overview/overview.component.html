@@ -5,12 +5,27 @@
         Loading Transacation!!
     </p>
     <p *ngIf="!isFetching">
-    <button routerLink="/transactions/add"> Add Transacation </button>
+        <button routerLink="/transactions/add"> Add Transacation </button>
     </p>
-    <li *ngFor="let t of transactionData; let i=index">
-        <button (click)="OnDeleteTransaction(i)">
-            Delete
-        </button>
-        {{ t | json }}
-    </li>
+    <p *ngIf="!isFetching">
+        <input type="number" [(ngModel)]="filterCardName"> | 
+        <button (click)="OnFliter()"> Fliter By Card Number</button>
+    </p>
+
+    <span *ngIf="!isFliter">
+        <li *ngFor="let t of transactionData; let i=index">
+            <button (click)="OnDeleteTransaction(i)">
+                Delete
+            </button>
+            {{ t | json }}
+        </li>
+    </span>
+    <span *ngIf="isFliter">
+        <li *ngFor="let t of FliteredTransactionData; let i=index">
+            <button (click)="OnDeleteTransaction(i)">
+                Delete
+            </button>
+            {{ t | json }}
+        </li>
+    </span>
 </ul>

@@ -10,7 +10,10 @@ import { TransactionInterface } from '../transaction.interface';
 export class OverviewComponent implements OnInit {
 
   transactionData: TransactionInterface[] = [];
+  FliteredTransactionData: TransactionInterface[] = [];
   isFetching = true;
+  isFliter = false;
+  filterCardName: number | undefined;
   constructor(private transcationService: TransactionService) {
     
   }
@@ -37,4 +40,22 @@ export class OverviewComponent implements OnInit {
     this.transactionData.splice(id, 1);
     // window.location.reload();
   }
+
+  OnFliter(){
+    this.FliteredTransactionData = [];
+    if(!this.filterCardName){
+      this.isFliter = false;
+      return;
+    }
+
+    for(var index in this.transactionData){
+
+      if(this.transactionData[index].credit_card.card_number === this.filterCardName){
+        // console.log(this.transactionData[index].credit_card.card_number);
+        this.FliteredTransactionData.push(this.transactionData[index]);
+      }
+    }
+    this.isFliter = true;
+  }
+
 }

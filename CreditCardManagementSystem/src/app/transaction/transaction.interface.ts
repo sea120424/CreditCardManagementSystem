@@ -1,7 +1,7 @@
 import { CardInterface } from "../credit-card/card.interface"
 
 export interface TransactionInterface {
-    card: CardInterface
+    credit_card: CardInterface
     uid: string,
     amount: number,
     comment: string,

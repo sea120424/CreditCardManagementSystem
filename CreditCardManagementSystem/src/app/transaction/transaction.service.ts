@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { TransactionInterface } from './transaction.interface';
 
 @Injectable({
@@ -25,4 +25,25 @@ export class TransactionService {
     this.http.post(this.url, transaction).subscribe()
   }
 
+
+  FilterTransactions(card_number: number): Observable<TransactionInterface[]> {
+    let filteredTransactions: TransactionInterface[] = [];
+
+    this.fetchDatas()
+      .pipe(
+        switchMap((list) => {
+          for (let index = 0; index < list.length; index++) {
+            let element = list[index];
+            element.amount = Number(element.amount.toFixed(2));
+            if (element.credit_card.card_number == card_number) {
+              console.log('Transactions: ' + element.uid);
+              filteredTransactions.push(element);
+            }
+          }
+          return of(filteredTransactions);
+        })
+      )
+      .subscribe();
+    return of(filteredTransactions);
+  }
 }

@@ -1,4 +1,5 @@
 <p>list-item works!</p>
+<button (click)="OnDeleteCard()"> Delete Card </button>
 <ul>
     <li>card_number: {{singleCard.card_number}}</li>
     <li>cardholder_name: {{singleCard.cardholder_name}}</li>
@@ -7,4 +8,16 @@
     <li>expiration_date_year: {{singleCard.expiration_date_year}}</li>
     <li>issuer: {{singleCard.issuer}}</li>
 </ul>
-<button (click)="OnDeleteCard()"> Delete Card </button>
+<span>
+    <p> The transactions belong to this card </p>
+    <div>    
+        <!--
+        <ul *ngFor="let transaction of FliteredTransactionData$ | async">
+            <li> amount: {{transaction.amount}}
+            <hr>
+        </ul>
+
+        -->    
+       
+    </div>
+</span>
