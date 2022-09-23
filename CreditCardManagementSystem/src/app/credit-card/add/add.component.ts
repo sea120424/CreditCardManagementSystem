@@ -50,6 +50,10 @@ export class AddComponent implements OnInit {
     if(!control.value){
       return {"InValidLen": true};
     }
+    if(control.value % 1 !== 0){
+      return {"InValidLen": true};
+    }
+
     const cardNumberLen = control.value.toString().length;
   
     // console.log(cardNumberLen);
@@ -63,6 +67,10 @@ export class AddComponent implements OnInit {
     if(!control.value){
       return {"InValidLen": true};
     }
+    if(control.value % 1 !== 0){
+      return {"InValidLen": true};
+    }
+
     const cscLen = control.value.toString().length;
     if(cscLen !== 3){
       return {"InValidLen": true};
@@ -72,6 +80,9 @@ export class AddComponent implements OnInit {
 
   ExpiredMonthChecker(control: FormControl): {[s: string]: boolean} | null {
     if(!control.value){
+      return {"InValidLen": true};
+    }
+    if(control.value % 1 !== 0){
       return {"InValidLen": true};
     }
     const month = control.value;

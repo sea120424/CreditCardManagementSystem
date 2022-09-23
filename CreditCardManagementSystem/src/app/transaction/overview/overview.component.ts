@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TransactionService } from '../transaction.service';
+import { TransactionInterface } from '../transaction.interface';
 
 @Component({
   selector: 'app-overview',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  transactionData: TransactionInterface[] = [];
+  isFetching = true;
+  constructor(private transcationService: TransactionService) {
+    
   }
 
+  ngOnInit(): void {
+    // this.OnFetchDatas();
+    this.OnFetchDatas();
+    console.log(this.isFetching);
+    console.log(this.transactionData);
+  }
+
+  OnFetchDatas(){
+    this.transcationService.fetchDatas().subscribe(data => {
+      this.transactionData = data;
+      
+      // console.log(this.transactionData);
+      this.isFetching = false;
+    })
+  }
+
+  OnDeleteTransaction(id: number){
+    const uid = this.transactionData[id].uid;
+    this.transcationService.deleteTransaction(uid);
+    window.location.reload();
+  }
 }
