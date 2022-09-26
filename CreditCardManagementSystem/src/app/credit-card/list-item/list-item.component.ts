@@ -26,6 +26,7 @@ export class ListItemComponent implements OnInit {
     this.id = this.router.snapshot.params['id'];
     this.OnFetchData(this.id);
     this.OnFetchTransaction();
+    console.log(this.transactionData[0].credit_card.card_number)
 
   }
 

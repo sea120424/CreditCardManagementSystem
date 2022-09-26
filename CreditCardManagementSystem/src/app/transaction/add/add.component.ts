@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CardInterface } from 'src/app/credit-card/card.interface';
 import { CardService } from 'src/app/credit-card/card.service';
+import { TransactionInterface } from '../transaction.interface';
 import { TransactionService } from '../transaction.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class AddComponent implements OnInit {
   AddTransactionForm!: FormGroup;
   CardList: CardInterface[] = [];
   ExistCard = false;
+  NewCard!: CardInterface;
 
   ngOnInit(): void {
     this.AddTransactionForm = new FormGroup({
@@ -38,7 +40,32 @@ export class AddComponent implements OnInit {
 
   OnCreateTransaction(){
     // console.log(this.AddTransactionForm);
-    this.transactionService.AddTransaction(this.AddTransactionForm.value);
+    for(var index in this.CardList){
+        if(this.CardList[+index].card_number === this.AddTransactionForm.value.card_number){
+          this.NewCard = this.CardList[+index];
+        }
+    }
+    // console.log(this.NewTransaction);
+    var NewTransaction: TransactionInterface = {
+      credit_card: this.NewCard,
+      uid: "",
+      amount: 0,
+      comment: "",
+      date: 0,
+      currency: ""
+    };
+
+    // NewTransaction: TransactionInterface ;
+
+    NewTransaction.amount = this.AddTransactionForm.value.amount;
+    NewTransaction.currency = this.AddTransactionForm.value.currency;
+    NewTransaction.date = this.AddTransactionForm.value.date;
+    NewTransaction.uid = this.AddTransactionForm.value.uid;
+    NewTransaction.comment = this.AddTransactionForm.value.comment;
+    //NewTransaction.credit_card = this.NewCard;
+    console.log(NewTransaction.credit_card);
+
+    this.transactionService.AddTransaction(NewTransaction);
     this.jumper.navigate(['/transactions']);
   }
 

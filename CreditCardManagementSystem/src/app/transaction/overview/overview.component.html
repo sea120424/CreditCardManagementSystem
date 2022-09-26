@@ -22,7 +22,7 @@
     </span>
     <span *ngIf="isFliter">
         <li *ngFor="let t of FliteredTransactionData; let i=index">
-            <button (click)="OnDeleteTransaction(i)">
+            <button (click)="OnDeleteFliteredTransaction(i)">
                 Delete
             </button>
             {{ t | json }}

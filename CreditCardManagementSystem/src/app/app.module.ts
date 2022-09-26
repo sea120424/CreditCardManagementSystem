@@ -16,13 +16,13 @@ import { CreditCardModule } from './credit-card/credit-card.module';
     AppComponent,
     HomeComponent,
     NavigationBarComponent,
-    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     CreditCardModule,
+    PagenotfoundComponent
     // ReactiveFormsModule
   ],
   providers: [],

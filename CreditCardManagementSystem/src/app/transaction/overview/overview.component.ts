@@ -13,7 +13,11 @@ export class OverviewComponent implements OnInit {
   FliteredTransactionData: TransactionInterface[] = [];
   isFetching = true;
   isFliter = false;
-  filterCardName: number | undefined;
+  filterCardName!: number;
+  FliterIdx: number[] = [];
+  Idx = 0;
+
+
   constructor(private transcationService: TransactionService) {
     
   }
@@ -41,7 +45,22 @@ export class OverviewComponent implements OnInit {
     // window.location.reload();
   }
 
+  OnDeleteFliteredTransaction(id: number){
+    const uid = this.transactionData[this.FliterIdx[id]].uid;
+    this.transcationService.deleteTransaction(uid);
+    this.transactionData.splice(this.FliterIdx[id], 1);
+    this.FliteredTransactionData.splice(id, 1);
+    this.FliterIdx.splice(id, 1);
+
+    // window.location.reload();
+  }
+
   OnFliter(){
+    this.Idx = 0;
+    this.FliterIdx = [];
+    console.log(this.filterCardName);
+
+
     this.FliteredTransactionData = [];
     if(!this.filterCardName){
       this.isFliter = false;
@@ -50,9 +69,11 @@ export class OverviewComponent implements OnInit {
 
     for(var index in this.transactionData){
 
+      console.log(index);
+      console.log(this.transactionData[index].credit_card.card_number);
       if(this.transactionData[index].credit_card.card_number === this.filterCardName){
-        // console.log(this.transactionData[index].credit_card.card_number);
         this.FliteredTransactionData.push(this.transactionData[index]);
+        this.FliterIdx.push(+index);
       }
     }
     this.isFliter = true;
