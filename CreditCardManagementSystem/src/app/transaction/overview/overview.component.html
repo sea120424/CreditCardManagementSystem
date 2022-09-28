@@ -8,7 +8,7 @@
         <button routerLink="/transactions/add"> Add Transacation </button>
     </p>
     <p *ngIf="!isFetching">
-        <input type="number" [(ngModel)]="filterCardName"> | 
+        <input type="number" [(ngModel)]="filterCardName"> |
         <button (click)="OnFliter()"> Fliter By Card Number</button>
     </p>
 
@@ -17,7 +17,7 @@
             <button (click)="OnDeleteTransaction(i)">
                 Delete
             </button>
-            {{ t | json }}
+            {{ t | transactionPipe }}
         </li>
     </span>
     <span *ngIf="isFliter">
@@ -25,7 +25,7 @@
             <button (click)="OnDeleteFliteredTransaction(i)">
                 Delete
             </button>
-            {{ t | json }}
+            {{ t | transactionPipe }}
         </li>
     </span>
 </ul>
