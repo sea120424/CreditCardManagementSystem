@@ -1,5 +1,23 @@
 <p>overview works!</p>
 
+<style>
+    table, th , td  {
+      border: 1px solid grey;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+    table{
+        table-layout: fixed;
+        width: 50%;
+    }
+    /* table tr:nth-child(odd) {
+      background-color: #ffffff;
+    }
+    table tr:nth-child(even) {
+      background-color: #000000;
+    } */
+    </style>
+
 <ul>
     <p *ngIf="isFetching">
         Loading Transacation!!
@@ -12,14 +30,37 @@
         <button (click)="OnFliter()"> Fliter By Card Number</button>
     </p>
 
+
+    <table>
+        <tr>
+            <th>card_number</th>
+            <th>csc_code</th>
+            <th>cardholder_name</th>
+            <th>expiration_date</th>
+            <th>issuer</th>
+        </tr>
+    </table>
     <span *ngIf="!isFliter">
+    <table *ngFor="let t of transactionData; let i=index">
+        <tr>
+            <!-- <td>{{t | transactionPipe}}</td> -->
+            <td> {{t['credit_card'].card_number}}</td>
+            <td> {{t['credit_card'].csc_code}}</td>
+            <td> {{t['credit_card'].cardholder_name}}</td>
+            <td> {{t['credit_card'].expiration_date_month}}</td>
+            <td> {{t['credit_card'].issuer}}</td>
+        </tr>
+    </table>
+    </span>
+
+    <!-- <span *ngIf="!isFliter">
         <li *ngFor="let t of transactionData; let i=index">
             <button (click)="OnDeleteTransaction(i)">
                 Delete
             </button>
             {{ t | transactionPipe }}
         </li>
-    </span>
+    </span> -->
     <span *ngIf="isFliter">
         <li *ngFor="let t of FliteredTransactionData; let i=index">
             <button (click)="OnDeleteFliteredTransaction(i)">
