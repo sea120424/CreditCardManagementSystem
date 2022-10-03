@@ -11,7 +11,7 @@
     }
     table{
         table-layout: fixed;
-        width: 60%;
+        width: 70%;
     }
     table td:nth-child(even) {
       background-color: #a1a1a160;
@@ -39,60 +39,42 @@
         <tr>
             <th>Delete Transacation</th>
             <th>card_number</th>
-            <th>csc_code</th>
             <th>cardholder_name</th>
-            <th>expiration_date</th>
-            <th>issuer</th>
+            <th>amount</th>
+            <th>currency</th>
+            <th>date</th>
+            <th>comment</th>
         </tr>
     </table>
     <span *ngIf="!isFliter">
     <table *ngFor="let t of transactionData; let i=index">
         <tr>
-            <!-- <td>{{t | transactionPipe}}</td> -->
             <td> <button (click)="OnDeleteTransaction(i)">
                 Delete
             </button></td>
             <td> {{t['credit_card'].card_number}}</td>
-            <td> {{t['credit_card'].csc_code}}</td>
             <td> {{t['credit_card'].cardholder_name}}</td>
-            <td> {{t | dateCustomPipe }}</td>
-            <td> {{t['credit_card'].issuer}}</td>
-
+            <td> {{t | currencyCustomPipe}} </td>
+            <td> {{t.currency}}</td>
+            <td> {{t.date | date}}</td>
+            <td> {{t.comment}} </td>
         </tr>
     </table>
     </span>
 
-    <!-- <span *ngIf="!isFliter">
-        <li *ngFor="let t of transactionData; let i=index">
-            <button (click)="OnDeleteTransaction(i)">
-                Delete
-            </button>
-            {{ t | transactionPipe }}
-        </li>
-    </span> -->
-
     <span *ngIf="isFliter">
         <table *ngFor="let t of FliteredTransactionData; let i=index">
             <tr>
-                <!-- <td>{{t | transactionPipe}}</td> -->
                 <td> <button (click)="OnDeleteFliteredTransaction(i)">
                     Delete
                 </button></td>
                 <td> {{t['credit_card'].card_number}}</td>
-                <td> {{t['credit_card'].csc_code}}</td>
                 <td> {{t['credit_card'].cardholder_name}}</td>
-                <td> {{t | dateCustomPipe }}</td>
-                <td> {{t['credit_card'].issuer}}</td>
-
+                <td> {{t | currencyCustomPipe}} </td>
+                <td> {{t.currency}}</td>
+                <td> {{t.date | date}}</td>
+                <td> {{t.comment}} </td>
             </tr>
         </table>
         </span>
-    <!-- <span *ngIf="isFliter">
-        <li *ngFor="let t of FliteredTransactionData; let i=index">
-            <button (click)="OnDeleteFliteredTransaction(i)">
-                Delete
-            </button>
-            {{ t | transactionPipe }}
-        </li>
-    </span> -->
 </ul>

@@ -57,6 +57,10 @@
             id="date"
             formControlName="date">
         </tr>
+        <tr>
+            <label for='comment'> Comment</label>
+            <input type="string" id="comment" formControlName="comment">
+        </tr>
         <button type="submit" [disabled]="!AddTransactionForm.valid"> Submit </button>
         </table>
     </form>

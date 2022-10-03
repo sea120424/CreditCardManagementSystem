@@ -26,7 +26,8 @@ export class AddComponent implements OnInit {
       'card_number': new FormControl(null, [Validators.required, this.CardNumberChecker.bind(this)]),
       'amount': new FormControl(null, Validators.required),
       'currency': new FormControl(null, Validators.required),
-      'date': new FormControl(null, Validators.required)
+      'date': new FormControl(null, Validators.required),
+      'comment': new FormControl(null)
     })
     this.OnFetchCardData();
   }
