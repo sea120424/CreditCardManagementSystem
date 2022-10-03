@@ -55,7 +55,7 @@
             <td> {{t['credit_card'].card_number}}</td>
             <td> {{t['credit_card'].csc_code}}</td>
             <td> {{t['credit_card'].cardholder_name}}</td>
-            <td> {{t | transactionPipe}}</td>
+            <td> {{t | dateCustomPipe }}</td>
             <td> {{t['credit_card'].issuer}}</td>
 
         </tr>
@@ -81,7 +81,7 @@
                 <td> {{t['credit_card'].card_number}}</td>
                 <td> {{t['credit_card'].csc_code}}</td>
                 <td> {{t['credit_card'].cardholder_name}}</td>
-                <td> {{t | transactionPipe }}</td>
+                <td> {{t | dateCustomPipe }}</td>
                 <td> {{t['credit_card'].issuer}}</td>
 
             </tr>

@@ -2,10 +2,10 @@ import { Pipe, PipeTransform } from "@angular/core";
 import { TransactionInterface } from "../transaction/transaction.interface";
 
 @Pipe({
-    name: 'transactionPipe'
+    name: 'dateCustomPipe'
 })
 
-export class TransactionPipe implements PipeTransform {
+export class DateCustomPipe implements PipeTransform {
 
     transform(json: TransactionInterface): string {
         var year = json['credit_card'].expiration_date_year.toString().replace('20','')
