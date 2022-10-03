@@ -1,8 +1,20 @@
-<p>add works!</p>
-
+<style>
+    table{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    tr {
+        text-align: right;
+    }
+    div{
+        text-align: center;
+    }
+</style>
+<p></p>
 <div>
     <form [formGroup]="AddTransactionForm" (ngSubmit)="OnCreateTransaction()">
-        <div>
+        <table>
+        <tr>
             <label for="card_number"> Card Number </label>
             <input
             type="number"
@@ -20,32 +32,33 @@
                 Card not exist, please enroll the card first.
             </span>
 
-        </div>
+        </tr>
 
-        <div>
+        <tr>
             <label for="amount"> Amount </label>
             <input
             type="number"
             id="amount"
             formControlName="amount">
-        </div>
+        </tr>
 
-        <div>
+        <tr>
             <label for="currency"> Currency </label>
             <input
             type="string"
             id="currency"
             formControlName="currency">
-        </div>
+        </tr>
 
-        <div>
+        <tr>
             <label for="date"> Date </label>
             <input
-            type="number"
+            type="date"
             id="date"
             formControlName="date">
-        </div>
+        </tr>
         <button type="submit" [disabled]="!AddTransactionForm.valid"> Submit </button>
+        </table>
     </form>
 
 </div>
