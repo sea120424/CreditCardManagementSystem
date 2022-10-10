@@ -6,17 +6,21 @@ import { AddComponent } from './add/add.component';
 import { ListComponent } from './list/list.component';
 import { ListItemComponent } from './list-item/list-item.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { CurrencyCustomPipe } from '../pipe/currencypipe';
+
 
 @NgModule({
   declarations: [
     AddComponent,
     ListComponent,
-    ListItemComponent
+    ListItemComponent,
+
   ],
   imports: [
     CommonModule,
     CreditCardRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CurrencyCustomPipe
   ],
   exports: [
     ListComponent,

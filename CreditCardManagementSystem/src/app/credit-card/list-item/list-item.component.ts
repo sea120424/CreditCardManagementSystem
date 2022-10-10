@@ -39,9 +39,7 @@ export class ListItemComponent implements OnInit {
 
   OnFetchTransaction(){
     this.transcationService.fetchDatas().subscribe(data => {
-      this.transactionData = data;
-      
-      // console.log(this.transactionData);
+      this.transactionData = data.filter((t) => t.credit_card.card_number == this.singleCard.card_number);
       this.isFetching = false;
     })
   }

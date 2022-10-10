@@ -17,14 +17,14 @@ import { CurrencyCustomPipe } from '../pipe/currencypipe';
     ListComponent,
     ListItemComponent,
     AddComponent,
-    DateCustomPipe,
-    CurrencyCustomPipe
+    DateCustomPipe
   ],
   imports: [
     CommonModule,
     TransactionRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CurrencyCustomPipe
   ],
   exports: [
     OverviewComponent
