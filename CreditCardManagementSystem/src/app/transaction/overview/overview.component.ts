@@ -16,6 +16,7 @@ export class OverviewComponent implements OnInit {
   filterCardName!: number;
   FliterIdx: number[] = [];
   Idx = 0;
+t: any;
 
 
   constructor(private transcationService: TransactionService) {

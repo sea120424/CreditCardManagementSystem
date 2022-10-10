@@ -1,4 +1,26 @@
-<p>overview works!</p>
+
+
+<style>
+    table, th , td  {
+      border: 1px solid grey;
+      border-collapse: collapse;
+      padding: 5px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    table{
+        table-layout: fixed;
+        width: 70%;
+    }
+    table td:nth-child(even) {
+      background-color: #a1a1a160;
+    } 
+
+    p {
+        text-align: center;
+    }
+    </style>
 
 <ul>
     <p *ngIf="isFetching">
@@ -12,20 +34,47 @@
         <button (click)="OnFliter()"> Fliter By Card Number</button>
     </p>
 
+
+    <table>
+        <tr>
+            <th>Delete Transacation</th>
+            <th>card_number</th>
+            <th>cardholder_name</th>
+            <th>amount</th>
+            <th>currency</th>
+            <th>date</th>
+            <th>comment</th>
+        </tr>
+    </table>
     <span *ngIf="!isFliter">
-        <li *ngFor="let t of transactionData; let i=index">
-            <button (click)="OnDeleteTransaction(i)">
+    <table *ngFor="let t of transactionData; let i=index">
+        <tr>
+            <td> <button (click)="OnDeleteTransaction(i)">
                 Delete
-            </button>
-            {{ t | transactionPipe }}
-        </li>
+            </button></td>
+            <td> {{t['credit_card'].card_number}}</td>
+            <td> {{t['credit_card'].cardholder_name}}</td>
+            <td> {{t | currencyCustomPipe}} </td>
+            <td> {{t.currency}}</td>
+            <td> {{t.date | date}}</td>
+            <td> {{t.comment}} </td>
+        </tr>
+    </table>
     </span>
+
     <span *ngIf="isFliter">
-        <li *ngFor="let t of FliteredTransactionData; let i=index">
-            <button (click)="OnDeleteFliteredTransaction(i)">
-                Delete
-            </button>
-            {{ t | transactionPipe }}
-        </li>
-    </span>
+        <table *ngFor="let t of FliteredTransactionData; let i=index">
+            <tr>
+                <td> <button (click)="OnDeleteFliteredTransaction(i)">
+                    Delete
+                </button></td>
+                <td> {{t['credit_card'].card_number}}</td>
+                <td> {{t['credit_card'].cardholder_name}}</td>
+                <td> {{t | currencyCustomPipe}} </td>
+                <td> {{t.currency}}</td>
+                <td> {{t.date | date}}</td>
+                <td> {{t.comment}} </td>
+            </tr>
+        </table>
+        </span>
 </ul>

@@ -7,7 +7,8 @@ import { ListComponent } from './list/list.component';
 import { ListItemComponent } from './list-item/list-item.component';
 import { AddComponent } from './add/add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TransactionPipe } from '../pipe/custompipe';
+import { DateCustomPipe } from '../pipe/datecustompipe';
+import { CurrencyCustomPipe } from '../pipe/currencypipe';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { TransactionPipe } from '../pipe/custompipe';
     ListComponent,
     ListItemComponent,
     AddComponent,
-    TransactionPipe
+    DateCustomPipe,
+    CurrencyCustomPipe
   ],
   imports: [
     CommonModule,
