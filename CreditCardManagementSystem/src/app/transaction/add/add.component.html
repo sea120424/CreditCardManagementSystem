@@ -1,10 +1,14 @@
 <style>
-    table{
+    table, td, tr{
         margin-left: auto;
         margin-right: auto;
+      
     }
     tr {
         text-align: right;
+        border: 1px solid grey;
+      border-collapse: collapse;
+      padding: 5px;
     }
     div{
         text-align: center;
@@ -15,51 +19,64 @@
     <form [formGroup]="AddTransactionForm" (ngSubmit)="OnCreateTransaction()">
         <table>
         <tr>
+            <td>
             <label for="card_number"> Card Number </label>
             <input
             type="number"
             id="card_number"
             formControlName="card_number">
+            </td>
+            <td>
             <span *ngIf="AddTransactionForm.get('card_number')?.touched &&
             AddTransactionForm.get('card_number')?.invalid &&
             AddTransactionForm.get('card_number')?.errors?.['InValidLen']">
                 Card number should be length between 7 to 16 integer.
             </span>
+            
 
             <span *ngIf="AddTransactionForm.get('card_number')?.touched &&
             AddTransactionForm.get('card_number')?.invalid &&
             AddTransactionForm.get('card_number')?.errors?.['CardNonExist']">
                 Card not exist, please enroll the card first.
             </span>
+        </td>
 
         </tr>
 
         <tr>
+            <td>
             <label for="amount"> Amount </label>
             <input
             type="number"
             id="amount"
             formControlName="amount">
+        </td>
         </tr>
 
         <tr>
+            <td>
             <label for="currency"> Currency </label>
             <input
             type="string"
             id="currency"
             formControlName="currency">
+            </td>
         </tr>
 
         <tr>
+            <td>
             <label for="date"> Date </label>
             <input
             type="date"
             id="date"
             formControlName="date">
+            </td>
         </tr>
         <tr>
+            <td>
             <label for='comment'> Comment</label>
             <input type="string" id="comment" formControlName="comment">
+        </td>
         </tr>
         <button type="submit" [disabled]="!AddTransactionForm.valid"> Submit </button>
         </table>

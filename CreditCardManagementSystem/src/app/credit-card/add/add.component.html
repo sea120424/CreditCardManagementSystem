@@ -30,73 +30,90 @@
             type="number"
             id="card_number"
             formControlName="card_number">
-    
+            </td>
+        <td>
             <span *ngIf="AddCardForm.get('card_number')?.touched &&
             AddCardForm.get('card_number')?.invalid &&
             AddCardForm.get('card_number')?.errors?.['InValidLen']">
                 Card number should be length between 7 to 16 integer.
             </span>
+            </td>
 
 
         </tr>
     
 
         <tr>
+            <td>
             <label for="cardholder_name"> Card Holder Name </label>
             <input 
             type="text"
             id="cardholder_name"
             formControlName="cardholder_name">
+            </td>
 
+            <td>
             <span *ngIf="AddCardForm.get('cardholder_name')?.touched &&
             AddCardForm.get('cardholder_name')?.invalid ">
                 Card holder name should not be empty.
             </span>
+            </td>
         </tr>
         <tr>
+            <td>
             <label for="csc_code"> CSC Code </label>
             <input 
             type="number"
             id="csc_code"
             formControlName="csc_code">
-
+            <td>
             <span *ngIf="AddCardForm.get('csc_code')?.touched &&
             AddCardForm.get('csc_code')?.invalid &&
             AddCardForm.get('csc_code')?.errors?.['InValidLen']">
                 CSC code must be 3 digit integer.
             </span>
+            </td>
 
         </tr>
         <tr>
+            <td>
             <label for="expiration_date_month"> Expiration Month </label>
             <input 
             type="number"
             id="expiration_date_month"
             formControlName="expiration_date_month">
-
+            </td>
+            <td>
             <span *ngIf="AddCardForm.get('expiration_date_month')?.touched &&
             AddCardForm.get('expiration_date_month')?.invalid &&
             AddCardForm.get('expiration_date_month')?.errors?.['InValidLen']">
                 Month must be in the range from 1 to 12 integer.
             </span>
+            </td>
         </tr>
         <tr>
+            <td>
             <label for="expiration_date_year"> Expiration Year </label>
             <input 
             type="number"
             id="expiration_date_year"
             formControlName="expiration_date_year">
+            </td>
+            <td>
             <span *ngIf="AddCardForm.get('expiration_date_year')?.touched &&
             AddCardForm.get('expiration_date_year')?.invalid ">
                 Year should not be empty.
             </span>
+            </td>
         </tr>
         <tr>
+            <td>
             <label for="issuer"> Issuer </label>
             <input 
             type="string"
             id="issuer"
             formControlName="issuer">
+            </td>
         </tr>
         <button type="submit" [disabled]="!AddCardForm.valid"> Submit </button>
     </table>
