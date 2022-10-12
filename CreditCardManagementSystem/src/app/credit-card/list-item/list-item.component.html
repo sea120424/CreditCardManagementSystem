@@ -1,21 +1,64 @@
-<p>list-item works!</p>
+<!-- <p>list-item works!</p> -->
 <button (click)="OnDeleteCard()"> Delete Card </button>
-<ul>
+<!-- <ul>
     <li>card_number: {{singleCard.card_number}}</li>
     <li>cardholder_name: {{singleCard.cardholder_name}}</li>
     <li>csc_code: {{singleCard.csc_code}}</li>
     <li>expiration_date_month: {{singleCard.expiration_date_month}}</li>
     <li>expiration_date_year: {{singleCard.expiration_date_year}}</li>
     <li>issuer: {{singleCard.issuer}}</li>
-</ul>
-<span>
-    <p> The transactions belong to this card </p>
-    <div *ngFor="let t of transactionData; let i=index">    
-        <li *ngIf="t.credit_card.card_number === singleCard.card_number">
-            <span>
-                {{ t | json }}
-            </span>
-        </li>
-       
-    </div>
-</span>
+</ul> -->
+
+<style>
+    table, th , td  {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    table{
+        table-layout: fixed;
+        width: 100%;
+        column-width: 150px;
+    }
+
+    table td:nth-child(even) {
+        background-color: #a1a1a160;
+    } 
+</style>
+<p align="center">The transactions belong to this card</p> 
+<table style="width:100%">
+    <tr>
+        <th style="width:10%">card_number</th>
+        <th>cardholder_name</th>
+        <th>issuer</th>
+        <th>csc_code</th>
+        <th>exp_date_month</th>
+        <th>exp_date_year</th>
+        <th>uid</th>
+        <th>amount</th>
+        <th>comment</th>
+        <th>date</th>
+        <th>currency</th>
+    </tr>
+</table>
+<table *ngFor="let t of transactionData; let i=index">  
+    <table *ngIf="t.credit_card.card_number === singleCard.card_number">
+            <!-- {{ t | json }} -->
+            <tr>
+                <td width="138px">{{t.credit_card.card_number}}</td>
+                <td>{{t.credit_card.cardholder_name}}</td>
+                <td>{{t.credit_card.issuer}}</td>
+                <td>{{t.credit_card.csc_code}}</td>
+                <td>{{t.credit_card.expiration_date_month}}</td>
+                <td>{{t.credit_card.expiration_date_year}}</td>
+                <td>{{t.uid}}</td>
+                <td>{{t.amount | number: '3.0-12'}}</td>
+                <td>{{t.comment}}</td>
+                <td>{{t.date}}</td>
+                <td>{{t.currency}}</td>
+            </tr>
+    </table>   
+</table>
